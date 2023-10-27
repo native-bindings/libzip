@@ -1,0 +1,15 @@
+{
+  "name": "libzip",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npx cmake-js compile"
+  },
+  "author": "Victor Queiroz <victorcqueirozg@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cmake-js": "^7.2.1",
+    "nan": "^2.18.0"
+  }
+}

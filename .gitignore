@@ -1,0 +1,5 @@
+/node_modules
+/build
+# clion CMake build directories
+/cmake-build-*
+/.idea
