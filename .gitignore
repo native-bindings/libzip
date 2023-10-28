@@ -3,3 +3,11 @@
 # clion CMake build directories
 /cmake-build-*
 /.idea
+/.vscode
+*.js
+*.d.ts
+*.map
+!/index.d.ts
+!/constants.d.ts
+!/index.js
+tsconfig.tsbuildinfo

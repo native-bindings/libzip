@@ -1,15 +1,40 @@
 {
-  "name": "libzip",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "postinstall": "npx cmake-js compile"
-  },
-  "author": "Victor Queiroz <victorcqueirozg@gmail.com>",
-  "license": "ISC",
-  "dependencies": {
-    "cmake-js": "^7.2.1",
-    "nan": "^2.18.0"
-  }
+    "name": "libzip",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "ava": {
+        "concurrency": 1,
+        "failFast": true
+    },
+    "files": [
+        "deps/**/*",
+        "CMakeLists.txt",
+        "index.{js,d.ts}",
+        "*.{cpp,h}"
+    ],
+    "scripts": {
+        "test": "npm run build:ts && npm run build:bindings && npx ava test/index.js",
+        "build:ts": "npx tsc -b . --force",
+        "build:bindings": "npx cmake-js compile -C",
+        "prepublishOnly": "npx ts-node scripts && npm test",
+        "postinstall": "npm run build:bindings"
+    },
+    "author": "Victor Queiroz <victorcqueirozg@gmail.com>",
+    "license": "ISC",
+    "dependencies": {
+        "bindings": "^1.5.0",
+        "cmake-js": "^7.2.1",
+        "nan": "^2.18.0"
+    },
+    "devDependencies": {
+        "@types/node": "^18.18.7",
+        "ava": "^5.3.1",
+        "c8": "^8.0.1",
+        "glob": "^10.3.10",
+        "jsbi": "^4.3.0",
+        "textstreamjs": "^0.0.4",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.2.2"
+    }
 }
