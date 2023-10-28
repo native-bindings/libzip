@@ -1,5 +1,5 @@
 {
-    "name": "libzip",
+    "name": "node-libzip",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
