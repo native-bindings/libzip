@@ -322,7 +322,7 @@ NAN_METHOD(Archive::SourceFile) {
     }
     zip_source_t* src = zip_source_file(archive->value, fname.c_str(), start, len);
     if(src == nullptr){
-        archive->ThrowError("create source buffer");
+        archive->ThrowError("create source file");
         return;
     }
     instance->value = src;
