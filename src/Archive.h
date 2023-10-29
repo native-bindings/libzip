@@ -12,7 +12,7 @@ public:
 private:
     zip_t* value = nullptr;
     static NAN_METHOD(New);
-    static NAN_METHOD(DirAdd);
+    static NAN_METHOD(AddDirectory);
     static NAN_METHOD(GetNumEntries);
     static NAN_METHOD(Open);
     static NAN_METHOD(OpenFile);

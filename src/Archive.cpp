@@ -16,7 +16,7 @@ void Archive::Init(v8::Local<v8::Object> target) {
     Nan::SetPrototypeMethod(tpl, "getName", GetName);
     Nan::SetPrototypeMethod(tpl, "getNumEntries", GetNumEntries);
     Nan::SetPrototypeMethod(tpl, "discard", Discard);
-    Nan::SetPrototypeMethod(tpl, "dirAdd", DirAdd);
+    Nan::SetPrototypeMethod(tpl, "addDirectory", AddDirectory);
     Nan::SetPrototypeMethod(tpl, "stat", Stat);
     Nan::SetPrototypeMethod(tpl, "statIndex", StatIndex);
     Nan::SetPrototypeMethod(tpl, "delete", Delete);
@@ -146,7 +146,7 @@ NAN_METHOD(Archive::Close) {
     archive->ThrowError("close the archive");
 }
 
-NAN_METHOD(Archive::DirAdd) {
+NAN_METHOD(Archive::AddDirectory) {
     Arguments args("dirAdd", info);
     Archive* archive;
     if(!args.Unwrap(archive)) {
