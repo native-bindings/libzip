@@ -1,6 +1,8 @@
 /**
  * signed 64-bit integer
  */
+type Int64 = string;
+
 export type Index = string;
 
 /**
@@ -23,7 +25,7 @@ export class File {
 
 export class Stat {
     name(): string;
-    size(): number;
+    size(): Uint64;
     compressedSize(): string;
     crc(): number;
     encryptionMethod(): number;
@@ -40,7 +42,12 @@ export class Archive {
      */
     sourceBuffer(data: Uint8Array): Source;
     /**
+     * @see {@link https://libzip.org/documentation/zip_source_file.html}
+     */
+    sourceFile(fname: string, start: Uint64, len: Int64): Source;
+    /**
      * @see {@link https://libzip.org/documentation/zip_file_add.html}
+     * @returns @type {Index}
      */
     addFile(path: string, src: Source, flags: Flag): Index;
     /**

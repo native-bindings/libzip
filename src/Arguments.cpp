@@ -93,3 +93,13 @@ bool Arguments::Convert(int index, int32_t& out) const {
 bool Arguments::IsInt32(const v8::Local<v8::Value>& arg) {
     return arg->IsInt32();
 }
+
+bool Arguments::Get(const uint32_t& value, v8::Local<v8::Value> &out) {
+    out = Nan::New<v8::Uint32>(value);
+    return true;
+}
+
+bool Arguments::Get(const uint64_t& input, v8::Local<v8::Value>& out) {
+    out = Nan::New(std::to_string(input)).ToLocalChecked();
+    return true;
+}

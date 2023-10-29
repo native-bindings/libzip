@@ -14,11 +14,13 @@ void Archive::Init(v8::Local<v8::Object> target) {
 
     Nan::SetPrototypeMethod(tpl, "open", Open);
     Nan::SetPrototypeMethod(tpl, "openFile", OpenFile);
+    Nan::SetPrototypeMethod(tpl, "openFileByIndex", OpenFileByIndex);
     Nan::SetPrototypeMethod(tpl, "getName", GetName);
     Nan::SetPrototypeMethod(tpl, "getNumEntries", GetNumEntries);
     Nan::SetPrototypeMethod(tpl, "discard", Discard);
     Nan::SetPrototypeMethod(tpl, "addDirectory", AddDirectory);
     Nan::SetPrototypeMethod(tpl, "sourceBuffer", SourceBuffer);
+    Nan::SetPrototypeMethod(tpl, "sourceFile", SourceFile);
     Nan::SetPrototypeMethod(tpl, "addFile", AddFile);
     Nan::SetPrototypeMethod(tpl, "stat", Stat);
     Nan::SetPrototypeMethod(tpl, "statIndex", StatIndex);
@@ -105,6 +107,27 @@ NAN_METHOD(Archive::OpenFile) {
         return;
     }
     zip_file_t* file = zip_fopen(archive->value, fname.c_str(), flags);
+    auto result = Nan::NewInstance(Nan::New(File::constructor), 0, nullptr).ToLocalChecked();
+    File* instance;
+    if(!args.Unwrap(result, instance)) {
+        return;
+    }
+    instance->value = file;
+    info.GetReturnValue().Set(result);
+}
+
+NAN_METHOD(Archive::OpenFileByIndex) {
+    Arguments args("openFileByIndex", info);
+    Archive* archive;
+    zip_uint64_t index;
+    zip_flags_t flags;
+    if(!args.Unwrap(archive)) {
+        return;
+    }
+    if(!args.Convert(0, index) || !ConvertZipConstant(info, 1, flags)) {
+        return;
+    }
+    zip_file_t* file = zip_fopen_index(archive->value, index, flags);
     auto result = Nan::NewInstance(Nan::New(File::constructor), 0, nullptr).ToLocalChecked();
     File* instance;
     if(!args.Unwrap(result, instance)) {
@@ -297,10 +320,6 @@ NAN_METHOD(Archive::SourceFile) {
     if(!args.Convert(0, fname) || !args.Convert(1, start) || !args.Convert(2, len)) {
         return;
     }
-    /**
-     * create source from in-memory data
-     */
-    //zip_source_file(zip_t *za, const char *fname, zip_uint64_t start, zip_int64_t len)
     zip_source_t* src = zip_source_file(archive->value, fname.c_str(), start, len);
     if(src == nullptr){
         archive->ThrowError("create source buffer");

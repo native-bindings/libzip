@@ -81,34 +81,41 @@ NAN_METHOD(Stat::ModificationTime) {
     if(!args.Unwrap(stat)) {
         return;
     }
-    info.GetReturnValue().Set(Nan::New(std::to_string(stat->value.mtime)).ToLocalChecked());
+    v8::Local<v8::Value> out;
+    if(!Arguments::Get(stat->value.mtime, out)){
+        return;
+    }
+    info.GetReturnValue().Set(out);
 }
 
 NAN_METHOD(Stat::CompressedSize) {
     Arguments args("compressedSize", info);
     Stat* stat;
-    if(!args.Unwrap(stat)) {
+    v8::Local<v8::Value> returnValue;
+    if(!args.Unwrap(stat) || !Arguments::Get(stat->value.comp_size, returnValue)) {
         return;
     }
-    info.GetReturnValue().Set(Nan::New(std::to_string(stat->value.comp_size)).ToLocalChecked());
+    info.GetReturnValue().Set(returnValue);
 }
 
 NAN_METHOD(Stat::Size) {
     Arguments args("size", info);
     Stat* stat;
-    if(!args.Unwrap(stat)) {
+    v8::Local<v8::Value> returnValue;
+    if(!args.Unwrap(stat) || !Arguments::Get(stat->value.size, returnValue)) {
         return;
     }
-    info.GetReturnValue().Set(Nan::New(std::to_string(stat->value.size)).ToLocalChecked());
+    info.GetReturnValue().Set(returnValue);
 }
 
 NAN_METHOD(Stat::Index) {
     Arguments args("index", info);
     Stat* stat;
-    if(!args.Unwrap(stat)) {
+    v8::Local<v8::Value> returnValue;
+    if(!args.Unwrap(stat) || !Arguments::Get(stat->value.index, returnValue)) {
         return;
     }
-    info.GetReturnValue().Set(Nan::New(std::to_string(stat->value.index)).ToLocalChecked());
+    info.GetReturnValue().Set(returnValue);
 }
 
 NAN_METHOD(Stat::Name) {

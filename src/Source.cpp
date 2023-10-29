@@ -22,8 +22,8 @@ NAN_METHOD(Source::New) {
 }
 
 Source::~Source() {
-    if(value != nullptr) {
-        zip_source_free(value);
-        value = nullptr;
-    }
+//    if(value != nullptr) {
+//        zip_source_free(value);
+//        value = nullptr;
+//    }
 }

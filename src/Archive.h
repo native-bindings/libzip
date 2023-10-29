@@ -17,6 +17,7 @@ private:
     static NAN_METHOD(GetNumEntries);
     static NAN_METHOD(Open);
     static NAN_METHOD(OpenFile);
+    static NAN_METHOD(OpenFileByIndex);
     static NAN_METHOD(StatIndex);
     static NAN_METHOD(Stat);
     static NAN_METHOD(Discard);

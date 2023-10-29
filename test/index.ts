@@ -1,8 +1,10 @@
 import path from "path";
 import zip from "..";
 import test from "ava";
+import fs from "fs";
 import crypto from "crypto";
 import JSBI from "jsbi";
+import assert from "assert";
 
 test("that it reads through the entire archive", (t) => {
     const archive = new zip.Archive();
@@ -271,4 +273,70 @@ test("that it should add a file from a buffer", (t) => {
     f.read(givenData, "1048576");
     t.deepEqual(givenData, expectedData);
     archive.discard();
+});
+
+test("it should test create source from an existing file", async (t) => {
+    const length = 256 * 256 * 2;
+    const files = [
+        {
+            path: "test1.bin",
+            expectedData: crypto.randomFillSync(new Uint8Array(length))
+        },
+        {
+            path: "test2.bin",
+            expectedData: crypto.randomFillSync(new Uint8Array(length))
+        },
+        {
+            path: "test3.bin",
+            expectedData: crypto.randomFillSync(new Uint8Array(length))
+        },
+        {
+            path: "test4.bin",
+            expectedData: crypto.randomFillSync(new Uint8Array(length))
+        }
+    ];
+
+    for (const f of files) {
+        await fs.promises.writeFile(
+            path.resolve(__dirname, f.path),
+            f.expectedData
+        );
+    }
+
+    const a = new zip.Archive();
+    const outFile = path.resolve(__dirname, "./test5.zip");
+    a.open(outFile, zip.constants.ZIP_CREATE | zip.constants.ZIP_TRUNCATE);
+
+    const indices = new Array<string>();
+    for (const f of files) {
+        const src = a.sourceFile(
+            path.resolve(__dirname, f.path),
+            JSBI.BigInt(0).toString(),
+            JSBI.BigInt(length).toString()
+        );
+        indices.push(a.addFile(f.path, src, zip.constants.ZIP_FL_ENC_UTF_8));
+    }
+    a.close();
+
+    a.open(outFile, zip.constants.ZIP_RDONLY);
+    const entryCount = JSBI.BigInt(a.getNumEntries(0));
+    t.deepEqual(JSBI.toNumber(entryCount), 4);
+
+    const data = new Uint8Array(length);
+
+    t.deepEqual(indices.length, 4);
+
+    for (const i of indices) {
+        const f = files[JSBI.toNumber(JSBI.BigInt(i))];
+        assert.strict.ok(f);
+        t.deepEqual(a.getName(i, 0), f.path);
+        const zipFile = a.openFileByIndex(
+            i.toString(),
+            zip.constants.ZIP_FL_ENC_UTF_8
+        );
+        zipFile.read(data, JSBI.BigInt(length).toString());
+        t.deepEqual(data, f.expectedData);
+    }
+
+    a.discard();
 });
