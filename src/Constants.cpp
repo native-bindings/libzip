@@ -623,486 +623,474 @@ void SetZipConstants(v8::Local<v8::Object> exports) {
         return;
     }
     Nan::Set(constants, key, Nan::New<v8::Uint32>(32773));
-    key = Nan::New("ZIP_LENGTH_TO_END").ToLocalChecked();
-    if(Nan::HasOwnProperty(constants, key).FromJust()) {
-        Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
-        return;
-    }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32774));
-    key = Nan::New("ZIP_LENGTH_UNCHECKED").ToLocalChecked();
-    if(Nan::HasOwnProperty(constants, key).FromJust()) {
-        Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
-        return;
-    }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32775));
     key = Nan::New("ZIP_ER_OK").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32776));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32774));
     key = Nan::New("ZIP_ER_MULTIDISK").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32777));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32775));
     key = Nan::New("ZIP_ER_RENAME").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32778));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32776));
     key = Nan::New("ZIP_ER_CLOSE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32779));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32777));
     key = Nan::New("ZIP_ER_SEEK").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32780));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32778));
     key = Nan::New("ZIP_ER_READ").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32781));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32779));
     key = Nan::New("ZIP_ER_WRITE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32782));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32780));
     key = Nan::New("ZIP_ER_CRC").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32783));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32781));
     key = Nan::New("ZIP_ER_ZIPCLOSED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32784));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32782));
     key = Nan::New("ZIP_ER_NOENT").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32785));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32783));
     key = Nan::New("ZIP_ER_EXISTS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32786));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32784));
     key = Nan::New("ZIP_ER_OPEN").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32787));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32785));
     key = Nan::New("ZIP_ER_TMPOPEN").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32788));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32786));
     key = Nan::New("ZIP_ER_ZLIB").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32789));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32787));
     key = Nan::New("ZIP_ER_MEMORY").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32790));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32788));
     key = Nan::New("ZIP_ER_CHANGED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32791));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32789));
     key = Nan::New("ZIP_ER_COMPNOTSUPP").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32792));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32790));
     key = Nan::New("ZIP_ER_EOF").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32793));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32791));
     key = Nan::New("ZIP_ER_INVAL").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32794));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32792));
     key = Nan::New("ZIP_ER_NOZIP").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32795));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32793));
     key = Nan::New("ZIP_ER_INTERNAL").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32796));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32794));
     key = Nan::New("ZIP_ER_INCONS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32797));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32795));
     key = Nan::New("ZIP_ER_REMOVE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32798));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32796));
     key = Nan::New("ZIP_ER_DELETED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32799));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32797));
     key = Nan::New("ZIP_ER_ENCRNOTSUPP").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32800));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32798));
     key = Nan::New("ZIP_ER_RDONLY").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32801));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32799));
     key = Nan::New("ZIP_ER_NOPASSWD").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32802));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32800));
     key = Nan::New("ZIP_ER_WRONGPASSWD").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32803));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32801));
     key = Nan::New("ZIP_ER_OPNOTSUPP").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32804));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32802));
     key = Nan::New("ZIP_ER_INUSE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32805));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32803));
     key = Nan::New("ZIP_ER_TELL").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32806));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32804));
     key = Nan::New("ZIP_ER_COMPRESSED_DATA").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32807));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32805));
     key = Nan::New("ZIP_ER_CANCELLED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32808));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32806));
     key = Nan::New("ZIP_ER_DATA_LENGTH").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32809));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32807));
     key = Nan::New("ZIP_ER_NOT_ALLOWED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32810));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32808));
     key = Nan::New("ZIP_ET_NONE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32811));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32809));
     key = Nan::New("ZIP_ET_SYS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32812));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32810));
     key = Nan::New("ZIP_ET_ZLIB").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32813));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32811));
     key = Nan::New("ZIP_ET_LIBZIP").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32814));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32812));
     key = Nan::New("ZIP_OPSYS_DOS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32815));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32813));
     key = Nan::New("ZIP_OPSYS_AMIGA").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32816));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32814));
     key = Nan::New("ZIP_OPSYS_OPENVMS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32817));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32815));
     key = Nan::New("ZIP_OPSYS_UNIX").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32818));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32816));
     key = Nan::New("ZIP_OPSYS_VM_CMS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32819));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32817));
     key = Nan::New("ZIP_OPSYS_ATARI_ST").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32820));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32818));
     key = Nan::New("ZIP_OPSYS_OS_2").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32821));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32819));
     key = Nan::New("ZIP_OPSYS_MACINTOSH").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32822));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32820));
     key = Nan::New("ZIP_OPSYS_Z_SYSTEM").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32823));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32821));
     key = Nan::New("ZIP_OPSYS_CPM").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32824));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32822));
     key = Nan::New("ZIP_OPSYS_WINDOWS_NTFS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32825));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32823));
     key = Nan::New("ZIP_OPSYS_MVS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32826));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32824));
     key = Nan::New("ZIP_OPSYS_VSE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32827));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32825));
     key = Nan::New("ZIP_OPSYS_ACORN_RISC").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32828));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32826));
     key = Nan::New("ZIP_OPSYS_VFAT").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32829));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32827));
     key = Nan::New("ZIP_OPSYS_ALTERNATE_MVS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32830));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32828));
     key = Nan::New("ZIP_OPSYS_BEOS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32831));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32829));
     key = Nan::New("ZIP_OPSYS_TANDEM").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32832));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32830));
     key = Nan::New("ZIP_OPSYS_OS_400").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32833));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32831));
     key = Nan::New("ZIP_OPSYS_OS_X").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32834));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32832));
     key = Nan::New("ZIP_OPSYS_DEFAULT").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32835));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32833));
     key = Nan::New("ZIP_SOURCE_SUPPORTS_READABLE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32836));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32834));
     key = Nan::New("ZIP_SOURCE_SUPPORTS_SEEKABLE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32837));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32835));
     key = Nan::New("ZIP_SOURCE_SUPPORTS_WRITABLE").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32838));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32836));
     key = Nan::New("ZIP_FILE_ATTRIBUTES_HOST_SYSTEM").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32839));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32837));
     key = Nan::New("ZIP_FILE_ATTRIBUTES_ASCII").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32840));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32838));
     key = Nan::New("ZIP_FILE_ATTRIBUTES_VERSION_NEEDED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32841));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32839));
     key = Nan::New("ZIP_FILE_ATTRIBUTES_EXTERNAL_FILE_ATTRIBUTES").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32842));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32840));
     key = Nan::New("ZIP_FILE_ATTRIBUTES_GENERAL_PURPOSE_BIT_FLAGS").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32843));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32841));
     key = Nan::New("ZIP_ENCODING_UNKNOWN").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32844));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32842));
     key = Nan::New("ZIP_ENCODING_ASCII").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32845));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32843));
     key = Nan::New("ZIP_ENCODING_UTF8_KNOWN").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32846));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32844));
     key = Nan::New("ZIP_ENCODING_UTF8_GUESSED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32847));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32845));
     key = Nan::New("ZIP_ENCODING_CP437").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32848));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32846));
     key = Nan::New("ZIP_ENCODING_ERROR").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32849));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32847));
     key = Nan::New("ZIP_SOURCE_WRITE_CLOSED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32850));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32848));
     key = Nan::New("ZIP_SOURCE_WRITE_OPEN").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32851));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32849));
     key = Nan::New("ZIP_SOURCE_WRITE_FAILED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32852));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32850));
     key = Nan::New("ZIP_SOURCE_WRITE_REMOVED").ToLocalChecked();
     if(Nan::HasOwnProperty(constants, key).FromJust()) {
         Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
         return;
     }
-    Nan::Set(constants, key, Nan::New<v8::Uint32>(32853));
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(32851));
     Nan::Set(exports, Nan::New("constants").ToLocalChecked(), constants);
 }
 bool ConvertZipConstant(Nan::NAN_METHOD_ARGS_TYPE& info, const int&& index, zip_flags_t& out) {
@@ -1214,322 +1202,314 @@ bool ConvertZipConstant(Nan::NAN_METHOD_ARGS_TYPE& info, const int&& index, zip_
         return true;
     }
     if(val == 32774) {
-        out = ZIP_LENGTH_TO_END;
-        return true;
-    }
-    if(val == 32775) {
-        out = ZIP_LENGTH_UNCHECKED;
-        return true;
-    }
-    if(val == 32776) {
         out = ZIP_ER_OK;
         return true;
     }
-    if(val == 32777) {
+    if(val == 32775) {
         out = ZIP_ER_MULTIDISK;
         return true;
     }
-    if(val == 32778) {
+    if(val == 32776) {
         out = ZIP_ER_RENAME;
         return true;
     }
-    if(val == 32779) {
+    if(val == 32777) {
         out = ZIP_ER_CLOSE;
         return true;
     }
-    if(val == 32780) {
+    if(val == 32778) {
         out = ZIP_ER_SEEK;
         return true;
     }
-    if(val == 32781) {
+    if(val == 32779) {
         out = ZIP_ER_READ;
         return true;
     }
-    if(val == 32782) {
+    if(val == 32780) {
         out = ZIP_ER_WRITE;
         return true;
     }
-    if(val == 32783) {
+    if(val == 32781) {
         out = ZIP_ER_CRC;
         return true;
     }
-    if(val == 32784) {
+    if(val == 32782) {
         out = ZIP_ER_ZIPCLOSED;
         return true;
     }
-    if(val == 32785) {
+    if(val == 32783) {
         out = ZIP_ER_NOENT;
         return true;
     }
-    if(val == 32786) {
+    if(val == 32784) {
         out = ZIP_ER_EXISTS;
         return true;
     }
-    if(val == 32787) {
+    if(val == 32785) {
         out = ZIP_ER_OPEN;
         return true;
     }
-    if(val == 32788) {
+    if(val == 32786) {
         out = ZIP_ER_TMPOPEN;
         return true;
     }
-    if(val == 32789) {
+    if(val == 32787) {
         out = ZIP_ER_ZLIB;
         return true;
     }
-    if(val == 32790) {
+    if(val == 32788) {
         out = ZIP_ER_MEMORY;
         return true;
     }
-    if(val == 32791) {
+    if(val == 32789) {
         out = ZIP_ER_CHANGED;
         return true;
     }
-    if(val == 32792) {
+    if(val == 32790) {
         out = ZIP_ER_COMPNOTSUPP;
         return true;
     }
-    if(val == 32793) {
+    if(val == 32791) {
         out = ZIP_ER_EOF;
         return true;
     }
-    if(val == 32794) {
+    if(val == 32792) {
         out = ZIP_ER_INVAL;
         return true;
     }
-    if(val == 32795) {
+    if(val == 32793) {
         out = ZIP_ER_NOZIP;
         return true;
     }
-    if(val == 32796) {
+    if(val == 32794) {
         out = ZIP_ER_INTERNAL;
         return true;
     }
-    if(val == 32797) {
+    if(val == 32795) {
         out = ZIP_ER_INCONS;
         return true;
     }
-    if(val == 32798) {
+    if(val == 32796) {
         out = ZIP_ER_REMOVE;
         return true;
     }
-    if(val == 32799) {
+    if(val == 32797) {
         out = ZIP_ER_DELETED;
         return true;
     }
-    if(val == 32800) {
+    if(val == 32798) {
         out = ZIP_ER_ENCRNOTSUPP;
         return true;
     }
-    if(val == 32801) {
+    if(val == 32799) {
         out = ZIP_ER_RDONLY;
         return true;
     }
-    if(val == 32802) {
+    if(val == 32800) {
         out = ZIP_ER_NOPASSWD;
         return true;
     }
-    if(val == 32803) {
+    if(val == 32801) {
         out = ZIP_ER_WRONGPASSWD;
         return true;
     }
-    if(val == 32804) {
+    if(val == 32802) {
         out = ZIP_ER_OPNOTSUPP;
         return true;
     }
-    if(val == 32805) {
+    if(val == 32803) {
         out = ZIP_ER_INUSE;
         return true;
     }
-    if(val == 32806) {
+    if(val == 32804) {
         out = ZIP_ER_TELL;
         return true;
     }
-    if(val == 32807) {
+    if(val == 32805) {
         out = ZIP_ER_COMPRESSED_DATA;
         return true;
     }
-    if(val == 32808) {
+    if(val == 32806) {
         out = ZIP_ER_CANCELLED;
         return true;
     }
-    if(val == 32809) {
+    if(val == 32807) {
         out = ZIP_ER_DATA_LENGTH;
         return true;
     }
-    if(val == 32810) {
+    if(val == 32808) {
         out = ZIP_ER_NOT_ALLOWED;
         return true;
     }
-    if(val == 32811) {
+    if(val == 32809) {
         out = ZIP_ET_NONE;
         return true;
     }
-    if(val == 32812) {
+    if(val == 32810) {
         out = ZIP_ET_SYS;
         return true;
     }
-    if(val == 32813) {
+    if(val == 32811) {
         out = ZIP_ET_ZLIB;
         return true;
     }
-    if(val == 32814) {
+    if(val == 32812) {
         out = ZIP_ET_LIBZIP;
         return true;
     }
-    if(val == 32815) {
+    if(val == 32813) {
         out = ZIP_OPSYS_DOS;
         return true;
     }
-    if(val == 32816) {
+    if(val == 32814) {
         out = ZIP_OPSYS_AMIGA;
         return true;
     }
-    if(val == 32817) {
+    if(val == 32815) {
         out = ZIP_OPSYS_OPENVMS;
         return true;
     }
-    if(val == 32818) {
+    if(val == 32816) {
         out = ZIP_OPSYS_UNIX;
         return true;
     }
-    if(val == 32819) {
+    if(val == 32817) {
         out = ZIP_OPSYS_VM_CMS;
         return true;
     }
-    if(val == 32820) {
+    if(val == 32818) {
         out = ZIP_OPSYS_ATARI_ST;
         return true;
     }
-    if(val == 32821) {
+    if(val == 32819) {
         out = ZIP_OPSYS_OS_2;
         return true;
     }
-    if(val == 32822) {
+    if(val == 32820) {
         out = ZIP_OPSYS_MACINTOSH;
         return true;
     }
-    if(val == 32823) {
+    if(val == 32821) {
         out = ZIP_OPSYS_Z_SYSTEM;
         return true;
     }
-    if(val == 32824) {
+    if(val == 32822) {
         out = ZIP_OPSYS_CPM;
         return true;
     }
-    if(val == 32825) {
+    if(val == 32823) {
         out = ZIP_OPSYS_WINDOWS_NTFS;
         return true;
     }
-    if(val == 32826) {
+    if(val == 32824) {
         out = ZIP_OPSYS_MVS;
         return true;
     }
-    if(val == 32827) {
+    if(val == 32825) {
         out = ZIP_OPSYS_VSE;
         return true;
     }
-    if(val == 32828) {
+    if(val == 32826) {
         out = ZIP_OPSYS_ACORN_RISC;
         return true;
     }
-    if(val == 32829) {
+    if(val == 32827) {
         out = ZIP_OPSYS_VFAT;
         return true;
     }
-    if(val == 32830) {
+    if(val == 32828) {
         out = ZIP_OPSYS_ALTERNATE_MVS;
         return true;
     }
-    if(val == 32831) {
+    if(val == 32829) {
         out = ZIP_OPSYS_BEOS;
         return true;
     }
-    if(val == 32832) {
+    if(val == 32830) {
         out = ZIP_OPSYS_TANDEM;
         return true;
     }
-    if(val == 32833) {
+    if(val == 32831) {
         out = ZIP_OPSYS_OS_400;
         return true;
     }
-    if(val == 32834) {
+    if(val == 32832) {
         out = ZIP_OPSYS_OS_X;
         return true;
     }
-    if(val == 32835) {
+    if(val == 32833) {
         out = ZIP_OPSYS_DEFAULT;
         return true;
     }
-    if(val == 32836) {
+    if(val == 32834) {
         out = ZIP_SOURCE_SUPPORTS_READABLE;
         return true;
     }
-    if(val == 32837) {
+    if(val == 32835) {
         out = ZIP_SOURCE_SUPPORTS_SEEKABLE;
         return true;
     }
-    if(val == 32838) {
+    if(val == 32836) {
         out = ZIP_SOURCE_SUPPORTS_WRITABLE;
         return true;
     }
-    if(val == 32839) {
+    if(val == 32837) {
         out = ZIP_FILE_ATTRIBUTES_HOST_SYSTEM;
         return true;
     }
-    if(val == 32840) {
+    if(val == 32838) {
         out = ZIP_FILE_ATTRIBUTES_ASCII;
         return true;
     }
-    if(val == 32841) {
+    if(val == 32839) {
         out = ZIP_FILE_ATTRIBUTES_VERSION_NEEDED;
         return true;
     }
-    if(val == 32842) {
+    if(val == 32840) {
         out = ZIP_FILE_ATTRIBUTES_EXTERNAL_FILE_ATTRIBUTES;
         return true;
     }
-    if(val == 32843) {
+    if(val == 32841) {
         out = ZIP_FILE_ATTRIBUTES_GENERAL_PURPOSE_BIT_FLAGS;
         return true;
     }
-    if(val == 32844) {
+    if(val == 32842) {
         out = ZIP_ENCODING_UNKNOWN;
         return true;
     }
-    if(val == 32845) {
+    if(val == 32843) {
         out = ZIP_ENCODING_ASCII;
         return true;
     }
-    if(val == 32846) {
+    if(val == 32844) {
         out = ZIP_ENCODING_UTF8_KNOWN;
         return true;
     }
-    if(val == 32847) {
+    if(val == 32845) {
         out = ZIP_ENCODING_UTF8_GUESSED;
         return true;
     }
-    if(val == 32848) {
+    if(val == 32846) {
         out = ZIP_ENCODING_CP437;
         return true;
     }
-    if(val == 32849) {
+    if(val == 32847) {
         out = ZIP_ENCODING_ERROR;
         return true;
     }
-    if(val == 32850) {
+    if(val == 32848) {
         out = ZIP_SOURCE_WRITE_CLOSED;
         return true;
     }
-    if(val == 32851) {
+    if(val == 32849) {
         out = ZIP_SOURCE_WRITE_OPEN;
         return true;
     }
-    if(val == 32852) {
+    if(val == 32850) {
         out = ZIP_SOURCE_WRITE_FAILED;
         return true;
     }
-    if(val == 32853) {
+    if(val == 32851) {
         out = ZIP_SOURCE_WRITE_REMOVED;
         return true;
     }
@@ -1628,324 +1608,316 @@ bool GetBindingZipConstant(const zip_flags_t& value, v8::Local<v8::Uint32>& out)
         out = Nan::New<v8::Uint32>(32773);
         return true;
     }
-    if(value == ZIP_LENGTH_TO_END) {
+    if(value == ZIP_ER_OK) {
         out = Nan::New<v8::Uint32>(32774);
         return true;
     }
-    if(value == ZIP_LENGTH_UNCHECKED) {
+    if(value == ZIP_ER_MULTIDISK) {
         out = Nan::New<v8::Uint32>(32775);
         return true;
     }
-    if(value == ZIP_ER_OK) {
+    if(value == ZIP_ER_RENAME) {
         out = Nan::New<v8::Uint32>(32776);
         return true;
     }
-    if(value == ZIP_ER_MULTIDISK) {
+    if(value == ZIP_ER_CLOSE) {
         out = Nan::New<v8::Uint32>(32777);
         return true;
     }
-    if(value == ZIP_ER_RENAME) {
+    if(value == ZIP_ER_SEEK) {
         out = Nan::New<v8::Uint32>(32778);
         return true;
     }
-    if(value == ZIP_ER_CLOSE) {
+    if(value == ZIP_ER_READ) {
         out = Nan::New<v8::Uint32>(32779);
         return true;
     }
-    if(value == ZIP_ER_SEEK) {
+    if(value == ZIP_ER_WRITE) {
         out = Nan::New<v8::Uint32>(32780);
         return true;
     }
-    if(value == ZIP_ER_READ) {
+    if(value == ZIP_ER_CRC) {
         out = Nan::New<v8::Uint32>(32781);
         return true;
     }
-    if(value == ZIP_ER_WRITE) {
+    if(value == ZIP_ER_ZIPCLOSED) {
         out = Nan::New<v8::Uint32>(32782);
         return true;
     }
-    if(value == ZIP_ER_CRC) {
+    if(value == ZIP_ER_NOENT) {
         out = Nan::New<v8::Uint32>(32783);
         return true;
     }
-    if(value == ZIP_ER_ZIPCLOSED) {
+    if(value == ZIP_ER_EXISTS) {
         out = Nan::New<v8::Uint32>(32784);
         return true;
     }
-    if(value == ZIP_ER_NOENT) {
+    if(value == ZIP_ER_OPEN) {
         out = Nan::New<v8::Uint32>(32785);
         return true;
     }
-    if(value == ZIP_ER_EXISTS) {
+    if(value == ZIP_ER_TMPOPEN) {
         out = Nan::New<v8::Uint32>(32786);
         return true;
     }
-    if(value == ZIP_ER_OPEN) {
+    if(value == ZIP_ER_ZLIB) {
         out = Nan::New<v8::Uint32>(32787);
         return true;
     }
-    if(value == ZIP_ER_TMPOPEN) {
+    if(value == ZIP_ER_MEMORY) {
         out = Nan::New<v8::Uint32>(32788);
         return true;
     }
-    if(value == ZIP_ER_ZLIB) {
+    if(value == ZIP_ER_CHANGED) {
         out = Nan::New<v8::Uint32>(32789);
         return true;
     }
-    if(value == ZIP_ER_MEMORY) {
+    if(value == ZIP_ER_COMPNOTSUPP) {
         out = Nan::New<v8::Uint32>(32790);
         return true;
     }
-    if(value == ZIP_ER_CHANGED) {
+    if(value == ZIP_ER_EOF) {
         out = Nan::New<v8::Uint32>(32791);
         return true;
     }
-    if(value == ZIP_ER_COMPNOTSUPP) {
+    if(value == ZIP_ER_INVAL) {
         out = Nan::New<v8::Uint32>(32792);
         return true;
     }
-    if(value == ZIP_ER_EOF) {
+    if(value == ZIP_ER_NOZIP) {
         out = Nan::New<v8::Uint32>(32793);
         return true;
     }
-    if(value == ZIP_ER_INVAL) {
+    if(value == ZIP_ER_INTERNAL) {
         out = Nan::New<v8::Uint32>(32794);
         return true;
     }
-    if(value == ZIP_ER_NOZIP) {
+    if(value == ZIP_ER_INCONS) {
         out = Nan::New<v8::Uint32>(32795);
         return true;
     }
-    if(value == ZIP_ER_INTERNAL) {
+    if(value == ZIP_ER_REMOVE) {
         out = Nan::New<v8::Uint32>(32796);
         return true;
     }
-    if(value == ZIP_ER_INCONS) {
+    if(value == ZIP_ER_DELETED) {
         out = Nan::New<v8::Uint32>(32797);
         return true;
     }
-    if(value == ZIP_ER_REMOVE) {
+    if(value == ZIP_ER_ENCRNOTSUPP) {
         out = Nan::New<v8::Uint32>(32798);
         return true;
     }
-    if(value == ZIP_ER_DELETED) {
+    if(value == ZIP_ER_RDONLY) {
         out = Nan::New<v8::Uint32>(32799);
         return true;
     }
-    if(value == ZIP_ER_ENCRNOTSUPP) {
+    if(value == ZIP_ER_NOPASSWD) {
         out = Nan::New<v8::Uint32>(32800);
         return true;
     }
-    if(value == ZIP_ER_RDONLY) {
+    if(value == ZIP_ER_WRONGPASSWD) {
         out = Nan::New<v8::Uint32>(32801);
         return true;
     }
-    if(value == ZIP_ER_NOPASSWD) {
+    if(value == ZIP_ER_OPNOTSUPP) {
         out = Nan::New<v8::Uint32>(32802);
         return true;
     }
-    if(value == ZIP_ER_WRONGPASSWD) {
+    if(value == ZIP_ER_INUSE) {
         out = Nan::New<v8::Uint32>(32803);
         return true;
     }
-    if(value == ZIP_ER_OPNOTSUPP) {
+    if(value == ZIP_ER_TELL) {
         out = Nan::New<v8::Uint32>(32804);
         return true;
     }
-    if(value == ZIP_ER_INUSE) {
+    if(value == ZIP_ER_COMPRESSED_DATA) {
         out = Nan::New<v8::Uint32>(32805);
         return true;
     }
-    if(value == ZIP_ER_TELL) {
+    if(value == ZIP_ER_CANCELLED) {
         out = Nan::New<v8::Uint32>(32806);
         return true;
     }
-    if(value == ZIP_ER_COMPRESSED_DATA) {
+    if(value == ZIP_ER_DATA_LENGTH) {
         out = Nan::New<v8::Uint32>(32807);
         return true;
     }
-    if(value == ZIP_ER_CANCELLED) {
+    if(value == ZIP_ER_NOT_ALLOWED) {
         out = Nan::New<v8::Uint32>(32808);
         return true;
     }
-    if(value == ZIP_ER_DATA_LENGTH) {
+    if(value == ZIP_ET_NONE) {
         out = Nan::New<v8::Uint32>(32809);
         return true;
     }
-    if(value == ZIP_ER_NOT_ALLOWED) {
+    if(value == ZIP_ET_SYS) {
         out = Nan::New<v8::Uint32>(32810);
         return true;
     }
-    if(value == ZIP_ET_NONE) {
+    if(value == ZIP_ET_ZLIB) {
         out = Nan::New<v8::Uint32>(32811);
         return true;
     }
-    if(value == ZIP_ET_SYS) {
+    if(value == ZIP_ET_LIBZIP) {
         out = Nan::New<v8::Uint32>(32812);
         return true;
     }
-    if(value == ZIP_ET_ZLIB) {
+    if(value == ZIP_OPSYS_DOS) {
         out = Nan::New<v8::Uint32>(32813);
         return true;
     }
-    if(value == ZIP_ET_LIBZIP) {
+    if(value == ZIP_OPSYS_AMIGA) {
         out = Nan::New<v8::Uint32>(32814);
         return true;
     }
-    if(value == ZIP_OPSYS_DOS) {
+    if(value == ZIP_OPSYS_OPENVMS) {
         out = Nan::New<v8::Uint32>(32815);
         return true;
     }
-    if(value == ZIP_OPSYS_AMIGA) {
+    if(value == ZIP_OPSYS_UNIX) {
         out = Nan::New<v8::Uint32>(32816);
         return true;
     }
-    if(value == ZIP_OPSYS_OPENVMS) {
+    if(value == ZIP_OPSYS_VM_CMS) {
         out = Nan::New<v8::Uint32>(32817);
         return true;
     }
-    if(value == ZIP_OPSYS_UNIX) {
+    if(value == ZIP_OPSYS_ATARI_ST) {
         out = Nan::New<v8::Uint32>(32818);
         return true;
     }
-    if(value == ZIP_OPSYS_VM_CMS) {
+    if(value == ZIP_OPSYS_OS_2) {
         out = Nan::New<v8::Uint32>(32819);
         return true;
     }
-    if(value == ZIP_OPSYS_ATARI_ST) {
+    if(value == ZIP_OPSYS_MACINTOSH) {
         out = Nan::New<v8::Uint32>(32820);
         return true;
     }
-    if(value == ZIP_OPSYS_OS_2) {
+    if(value == ZIP_OPSYS_Z_SYSTEM) {
         out = Nan::New<v8::Uint32>(32821);
         return true;
     }
-    if(value == ZIP_OPSYS_MACINTOSH) {
+    if(value == ZIP_OPSYS_CPM) {
         out = Nan::New<v8::Uint32>(32822);
         return true;
     }
-    if(value == ZIP_OPSYS_Z_SYSTEM) {
+    if(value == ZIP_OPSYS_WINDOWS_NTFS) {
         out = Nan::New<v8::Uint32>(32823);
         return true;
     }
-    if(value == ZIP_OPSYS_CPM) {
+    if(value == ZIP_OPSYS_MVS) {
         out = Nan::New<v8::Uint32>(32824);
         return true;
     }
-    if(value == ZIP_OPSYS_WINDOWS_NTFS) {
+    if(value == ZIP_OPSYS_VSE) {
         out = Nan::New<v8::Uint32>(32825);
         return true;
     }
-    if(value == ZIP_OPSYS_MVS) {
+    if(value == ZIP_OPSYS_ACORN_RISC) {
         out = Nan::New<v8::Uint32>(32826);
         return true;
     }
-    if(value == ZIP_OPSYS_VSE) {
+    if(value == ZIP_OPSYS_VFAT) {
         out = Nan::New<v8::Uint32>(32827);
         return true;
     }
-    if(value == ZIP_OPSYS_ACORN_RISC) {
+    if(value == ZIP_OPSYS_ALTERNATE_MVS) {
         out = Nan::New<v8::Uint32>(32828);
         return true;
     }
-    if(value == ZIP_OPSYS_VFAT) {
+    if(value == ZIP_OPSYS_BEOS) {
         out = Nan::New<v8::Uint32>(32829);
         return true;
     }
-    if(value == ZIP_OPSYS_ALTERNATE_MVS) {
+    if(value == ZIP_OPSYS_TANDEM) {
         out = Nan::New<v8::Uint32>(32830);
         return true;
     }
-    if(value == ZIP_OPSYS_BEOS) {
+    if(value == ZIP_OPSYS_OS_400) {
         out = Nan::New<v8::Uint32>(32831);
         return true;
     }
-    if(value == ZIP_OPSYS_TANDEM) {
+    if(value == ZIP_OPSYS_OS_X) {
         out = Nan::New<v8::Uint32>(32832);
         return true;
     }
-    if(value == ZIP_OPSYS_OS_400) {
+    if(value == ZIP_OPSYS_DEFAULT) {
         out = Nan::New<v8::Uint32>(32833);
         return true;
     }
-    if(value == ZIP_OPSYS_OS_X) {
+    if(value == ZIP_SOURCE_SUPPORTS_READABLE) {
         out = Nan::New<v8::Uint32>(32834);
         return true;
     }
-    if(value == ZIP_OPSYS_DEFAULT) {
+    if(value == ZIP_SOURCE_SUPPORTS_SEEKABLE) {
         out = Nan::New<v8::Uint32>(32835);
         return true;
     }
-    if(value == ZIP_SOURCE_SUPPORTS_READABLE) {
+    if(value == ZIP_SOURCE_SUPPORTS_WRITABLE) {
         out = Nan::New<v8::Uint32>(32836);
         return true;
     }
-    if(value == ZIP_SOURCE_SUPPORTS_SEEKABLE) {
+    if(value == ZIP_FILE_ATTRIBUTES_HOST_SYSTEM) {
         out = Nan::New<v8::Uint32>(32837);
         return true;
     }
-    if(value == ZIP_SOURCE_SUPPORTS_WRITABLE) {
+    if(value == ZIP_FILE_ATTRIBUTES_ASCII) {
         out = Nan::New<v8::Uint32>(32838);
         return true;
     }
-    if(value == ZIP_FILE_ATTRIBUTES_HOST_SYSTEM) {
+    if(value == ZIP_FILE_ATTRIBUTES_VERSION_NEEDED) {
         out = Nan::New<v8::Uint32>(32839);
         return true;
     }
-    if(value == ZIP_FILE_ATTRIBUTES_ASCII) {
+    if(value == ZIP_FILE_ATTRIBUTES_EXTERNAL_FILE_ATTRIBUTES) {
         out = Nan::New<v8::Uint32>(32840);
         return true;
     }
-    if(value == ZIP_FILE_ATTRIBUTES_VERSION_NEEDED) {
+    if(value == ZIP_FILE_ATTRIBUTES_GENERAL_PURPOSE_BIT_FLAGS) {
         out = Nan::New<v8::Uint32>(32841);
         return true;
     }
-    if(value == ZIP_FILE_ATTRIBUTES_EXTERNAL_FILE_ATTRIBUTES) {
+    if(value == ZIP_ENCODING_UNKNOWN) {
         out = Nan::New<v8::Uint32>(32842);
         return true;
     }
-    if(value == ZIP_FILE_ATTRIBUTES_GENERAL_PURPOSE_BIT_FLAGS) {
+    if(value == ZIP_ENCODING_ASCII) {
         out = Nan::New<v8::Uint32>(32843);
         return true;
     }
-    if(value == ZIP_ENCODING_UNKNOWN) {
+    if(value == ZIP_ENCODING_UTF8_KNOWN) {
         out = Nan::New<v8::Uint32>(32844);
         return true;
     }
-    if(value == ZIP_ENCODING_ASCII) {
+    if(value == ZIP_ENCODING_UTF8_GUESSED) {
         out = Nan::New<v8::Uint32>(32845);
         return true;
     }
-    if(value == ZIP_ENCODING_UTF8_KNOWN) {
+    if(value == ZIP_ENCODING_CP437) {
         out = Nan::New<v8::Uint32>(32846);
         return true;
     }
-    if(value == ZIP_ENCODING_UTF8_GUESSED) {
+    if(value == ZIP_ENCODING_ERROR) {
         out = Nan::New<v8::Uint32>(32847);
         return true;
     }
-    if(value == ZIP_ENCODING_CP437) {
+    if(value == ZIP_SOURCE_WRITE_CLOSED) {
         out = Nan::New<v8::Uint32>(32848);
         return true;
     }
-    if(value == ZIP_ENCODING_ERROR) {
+    if(value == ZIP_SOURCE_WRITE_OPEN) {
         out = Nan::New<v8::Uint32>(32849);
         return true;
     }
-    if(value == ZIP_SOURCE_WRITE_CLOSED) {
+    if(value == ZIP_SOURCE_WRITE_FAILED) {
         out = Nan::New<v8::Uint32>(32850);
         return true;
     }
-    if(value == ZIP_SOURCE_WRITE_OPEN) {
-        out = Nan::New<v8::Uint32>(32851);
-        return true;
-    }
-    if(value == ZIP_SOURCE_WRITE_FAILED) {
-        out = Nan::New<v8::Uint32>(32852);
-        return true;
-    }
     if(value == ZIP_SOURCE_WRITE_REMOVED) {
-        out = Nan::New<v8::Uint32>(32853);
+        out = Nan::New<v8::Uint32>(32851);
         return true;
     }
     Nan::ThrowError(Nan::New("Failed to create binding value from original value: " + std::to_string(value)).ToLocalChecked());
@@ -2058,6 +2030,56 @@ bool GetBindingZipOpenModeFlag(const int& value, v8::Local<v8::Uint32>& out) {
             v |= 32;
         }
         out = Nan::New<v8::Uint32>(v);
+        return true;
+    }
+    Nan::ThrowError(Nan::New("Failed to create binding value from original value: " + std::to_string(value)).ToLocalChecked());
+    return false;
+}
+void SetZipLengthConstants(v8::Local<v8::Object> exports) {
+    auto constants = GetOrCreateConstants(exports);
+    v8::Local<v8::String> key;
+    key = Nan::New("ZIP_LENGTH_TO_END").ToLocalChecked();
+    if(Nan::HasOwnProperty(constants, key).FromJust()) {
+        Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
+        return;
+    }
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(1));
+    key = Nan::New("ZIP_LENGTH_UNCHECKED").ToLocalChecked();
+    if(Nan::HasOwnProperty(constants, key).FromJust()) {
+        Nan::ThrowError(Nan::New("Failed to set constant value due to duplicate key: " + std::string(*Nan::Utf8String(key))).ToLocalChecked());
+        return;
+    }
+    Nan::Set(constants, key, Nan::New<v8::Uint32>(2));
+    Nan::Set(exports, Nan::New("constants").ToLocalChecked(), constants);
+}
+bool ConvertZipLengthConstant(Nan::NAN_METHOD_ARGS_TYPE& info, const int&& index, zip_int32_t& out) {
+    Arguments args("libzipflags",info);
+    if(!args.AssertArgumentType("Int32", index, Arguments::IsInt32)) {
+        return false;
+    }
+    auto val = Nan::To<v8::Int32>(info[index]).ToLocalChecked()->Value();
+    if(val == 1) {
+        out = ZIP_LENGTH_TO_END;
+        return true;
+    }
+    if(val == 2) {
+        out = ZIP_LENGTH_UNCHECKED;
+        return true;
+    }
+    if(val != 0) {
+        Nan::ThrowError(Nan::New("Failed to convert constant value to libzip constant: " + std::to_string(val)).ToLocalChecked());
+        return false;
+    }
+    out = 0;
+    return true;
+}
+bool GetBindingZipLengthConstant(const zip_int32_t& value, v8::Local<v8::Int32>& out) {
+    if(value == ZIP_LENGTH_TO_END) {
+        out = Nan::New<v8::Int32>(1);
+        return true;
+    }
+    if(value == ZIP_LENGTH_UNCHECKED) {
+        out = Nan::New<v8::Int32>(2);
         return true;
     }
     Nan::ThrowError(Nan::New("Failed to create binding value from original value: " + std::to_string(value)).ToLocalChecked());

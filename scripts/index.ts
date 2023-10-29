@@ -110,6 +110,17 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
         {
             defines: buildDefines([
                 /**
+                 * ZIP_LENGTH_*
+                 */
+                { constants: ["ZIP_LENGTH_TO_END", "ZIP_LENGTH_UNCHECKED"] }
+            ]).defines,
+            name: "ZipLengthConstant",
+            jsType: "Int32",
+            outputVariableType: "zip_int32_t"
+        },
+        {
+            defines: buildDefines([
+                /**
                  * ZIP_STAT_*
                  */
                 {

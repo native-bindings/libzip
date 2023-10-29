@@ -30,6 +30,7 @@ NAN_METHOD(EncryptionMethodSupported) {
 
 NAN_MODULE_INIT(Init) {
     SetNativeConstants(target);
+    SetZipLengthConstants(target);
     SetZipConstants(target);
     SetZipStatFlags(target);
     SetZipEncryptionMethodFlags(target);

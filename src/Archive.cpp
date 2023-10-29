@@ -317,7 +317,16 @@ NAN_METHOD(Archive::SourceFile) {
     std::string fname;
     zip_uint64_t start;
     zip_int64_t len;
-    if(!args.Convert(0, fname) || !args.Convert(1, start) || !args.Convert(2, len)) {
+    if(!args.Convert(0, fname) || !args.Convert(1, start)) {
+        return;
+    }
+    if(info[2]->IsNumber()) {
+        zip_int32_t lenConstant;
+        if(!ConvertZipLengthConstant(info, 2, lenConstant)) {
+            return;
+        }
+        len = lenConstant;
+    } else if(!args.Convert(2, len)) {
         return;
     }
     zip_source_t* src = zip_source_file(archive->value, fname.c_str(), start, len);

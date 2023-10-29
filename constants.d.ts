@@ -49,8 +49,6 @@ export interface IConstants {
     ZIP_AFL_CREATE_OR_KEEP_FILE_FOR_EMPTY_ARCHIVE: number;
     ZIP_EXTRA_FIELD_ALL: number;
     ZIP_EXTRA_FIELD_NEW: number;
-    ZIP_LENGTH_TO_END: number;
-    ZIP_LENGTH_UNCHECKED: number;
     ZIP_ER_OK: number;
     ZIP_ER_MULTIDISK: number;
     ZIP_ER_RENAME: number;
@@ -134,6 +132,8 @@ export interface IConstants {
     ZIP_CHECKCONS: number;
     ZIP_TRUNCATE: number;
     ZIP_RDONLY: number;
+    ZIP_LENGTH_TO_END: number;
+    ZIP_LENGTH_UNCHECKED: number;
     ZIP_STAT_NAME: number;
     ZIP_STAT_INDEX: number;
     ZIP_STAT_SIZE: number;

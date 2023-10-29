@@ -33,10 +33,6 @@ export const zipDefines = [
     },
     { constants: ["ZIP_EXTRA_FIELD_ALL", "ZIP_EXTRA_FIELD_NEW"] },
     /**
-     * ZIP_LENGTH_*
-     */
-    { constants: ["ZIP_LENGTH_TO_END", "ZIP_LENGTH_UNCHECKED"] },
-    /**
      * errors
      */
     {

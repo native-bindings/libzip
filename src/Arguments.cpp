@@ -6,7 +6,12 @@ bool Arguments::Convert(int index, std::string& out) const {
     }
     const auto arg = info[index];
     std::vector<char> buf(Nan::DecodeBytes(arg));
-    if(Nan::DecodeWrite(buf.data(), buf.size(), arg) != buf.size()) {
+    const auto writeResult = Nan::DecodeWrite(buf.data(), buf.size(), arg);
+    if(writeResult <= 0) {
+        ThrowError("Failed to decode argument " + std::to_string(index + 1) + ": " + std::to_string(writeResult));
+        return false;
+    }
+    if(static_cast<size_t>(writeResult) != buf.size()) {
         ThrowError("Failed to decode argument " + std::to_string(index + 1) + ".");
         return false;
     }

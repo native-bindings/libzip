@@ -44,7 +44,7 @@ export class Archive {
     /**
      * @see {@link https://libzip.org/documentation/zip_source_file.html}
      */
-    sourceFile(fname: string, start: Uint64, len: Int64): Source;
+    sourceFile(fname: string, start: Uint64, len: Int64 | /* int32 */ number): Source;
     /**
      * @see {@link https://libzip.org/documentation/zip_file_add.html}
      * @returns @type {Index}
