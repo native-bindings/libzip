@@ -11,6 +11,8 @@ add_library(
     File.h
     Stat.cpp
     Stat.h
+        Source.cpp
+        Source.h
 )
 target_include_directories(nodelibzip PRIVATE ${CMAKE_JS_INC} $ENV{NVM_INC})
 target_link_libraries(nodelibzip PRIVATE ${CMAKE_JS_LIB} zip)

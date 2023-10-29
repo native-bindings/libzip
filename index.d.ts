@@ -32,7 +32,17 @@ export class Stat {
     valid(): Flag;
 }
 
+export class Source {}
+
 export class Archive {
+    /**
+     * @see {@link https://libzip.org/documentation/zip_source_buffer.html}
+     */
+    sourceBuffer(data: Uint8Array): Source;
+    /**
+     * @see {@link https://libzip.org/documentation/zip_file_add.html}
+     */
+    addFile(path: string, src: Source, flags: Flag): Index;
     /**
      * @see {@link https://libzip.org/documentation/zip_open.html}
      */
@@ -68,7 +78,7 @@ export class Archive {
     /**
      * @see {@link https://libzip.org/documentation/zip_dir_add.html}
      */
-    dirAdd(path: string, flags: Flags): Index;
+    addDirectory(path: string, flags: Flags): Index;
     discard(): void;
 }
 

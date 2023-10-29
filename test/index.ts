@@ -1,6 +1,7 @@
 import path from "path";
 import zip from "..";
 import test from "ava";
+import crypto from "crypto";
 import JSBI from "jsbi";
 
 test("that it reads through the entire archive", (t) => {
@@ -85,7 +86,10 @@ test("Archive#getNumEntries: should return the number of entries", (t) => {
 test("that it should add a directory", (t) => {
     const archive = new zip.Archive();
     archive.open(path.resolve(__dirname, "./test1.zip"), 0);
-    t.deepEqual(archive.dirAdd("test", zip.constants.ZIP_FL_ENC_UTF_8), "2");
+    t.deepEqual(
+        archive.addDirectory("test", zip.constants.ZIP_FL_ENC_UTF_8),
+        "2"
+    );
 });
 
 test("that it should throw an error if we try to add a directory in a read-only archive", (t) => {
@@ -96,7 +100,7 @@ test("that it should throw an error if we try to add a directory in a read-only 
     );
     t.throws(
         () => {
-            archive.dirAdd("test", zip.constants.ZIP_FL_ENC_UTF_8);
+            archive.addDirectory("test", zip.constants.ZIP_FL_ENC_UTF_8);
         },
         undefined,
         "Failed to add directory with error code 25: Read-only archive"
@@ -242,4 +246,29 @@ test("it should return the full path of the file in the archive", (t) => {
         "test/index.ts",
         "test/index.d.ts.map"
     ]);
+});
+
+test("that it should add a file from a buffer", (t) => {
+    const archive = new zip.Archive();
+    const createdZipFile = path.resolve(__dirname, "./test4.zip");
+    archive.open(
+        createdZipFile,
+        zip.constants.ZIP_CREATE | zip.constants.ZIP_TRUNCATE
+    );
+    const expectedData = crypto.randomFillSync(new Uint8Array(1024 * 1024 * 1));
+    const src = archive.sourceBuffer(expectedData);
+    t.deepEqual(
+        archive.addFile("test.bin", src, zip.constants.ZIP_FL_ENC_UTF_8),
+        "0"
+    );
+    archive.close();
+
+    archive.open(createdZipFile, zip.constants.ZIP_RDONLY);
+    t.deepEqual(archive.getNumEntries(zip.constants.ZIP_FL_UNCHANGED), "1");
+    t.deepEqual(archive.getName("0", 0), "test.bin");
+    const f = archive.openFile("test.bin", zip.constants.ZIP_FL_ENC_UTF_8);
+    const givenData = new Uint8Array(1024 * 1024 * 1);
+    f.read(givenData, "1048576");
+    t.deepEqual(givenData, expectedData);
+    archive.discard();
 });

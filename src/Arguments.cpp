@@ -89,3 +89,7 @@ bool Arguments::Convert(int index, int32_t& out) const {
     out = std::stoi(value, nullptr, 10);
     return true;
 }
+
+bool Arguments::IsInt32(const v8::Local<v8::Value>& arg) {
+    return arg->IsInt32();
+}

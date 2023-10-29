@@ -3,6 +3,7 @@
 #include "Constants.h"
 #include "File.h"
 #include "Stat.h"
+#include "Source.h"
 
 Nan::Persistent<v8::Function> Archive::constructor;
 
@@ -17,6 +18,8 @@ void Archive::Init(v8::Local<v8::Object> target) {
     Nan::SetPrototypeMethod(tpl, "getNumEntries", GetNumEntries);
     Nan::SetPrototypeMethod(tpl, "discard", Discard);
     Nan::SetPrototypeMethod(tpl, "addDirectory", AddDirectory);
+    Nan::SetPrototypeMethod(tpl, "sourceBuffer", SourceBuffer);
+    Nan::SetPrototypeMethod(tpl, "addFile", AddFile);
     Nan::SetPrototypeMethod(tpl, "stat", Stat);
     Nan::SetPrototypeMethod(tpl, "statIndex", StatIndex);
     Nan::SetPrototypeMethod(tpl, "delete", Delete);
@@ -146,6 +149,26 @@ NAN_METHOD(Archive::Close) {
     archive->ThrowError("close the archive");
 }
 
+NAN_METHOD(Archive::AddFile) {
+    Arguments args("addFile", info);
+    Archive* archive;
+    std::string fname;
+    zip_flags_t flags;
+    Source* src;
+    if(!args.Unwrap(archive)) {
+        return;
+    }
+    if(!args.Convert(0, fname) || !args.Unwrap(1, src) || !ConvertZipConstant(info, 2, flags)) {
+        return;
+    }
+    zip_int64_t index = zip_file_add(archive->value, fname.c_str(), src->value, flags);
+    if(index < 0) {
+        archive->ThrowError("add file");
+        return;
+    }
+    info.GetReturnValue().Set(Nan::New(std::to_string(index)).ToLocalChecked());
+}
+
 NAN_METHOD(Archive::AddDirectory) {
     Arguments args("dirAdd", info);
     Archive* archive;
@@ -227,6 +250,66 @@ NAN_METHOD(Archive::Stat) {
     archive->ThrowError("stat file by name");
 }
 
+NAN_METHOD(Archive::SourceBuffer) {
+    Arguments args("sourceBuffer", info);
+    Archive* archive;
+    if(!args.Unwrap(archive)) {
+        return;
+    }
+    auto result = Nan::NewInstance(Nan::New(Source::constructor), 0, nullptr).ToLocalChecked();
+    Source* instance;
+    if(!args.Unwrap(result, instance)) {
+        return;
+    }
+    /**
+     * transfer data from typed array to vector
+     */
+    Nan::TypedArrayContents<uint8_t> contents(info[0]);
+    auto& data = instance->data;
+    data.resize(contents.length());
+    std::memcpy(data.data(), contents.operator*(), contents.length());
+    /**
+     * create source from in-memory data
+     */
+    zip_source_t* src = zip_source_buffer(archive->value, data.data(), data.size(), 0);
+    if(src == nullptr){
+        archive->ThrowError("create source buffer");
+        return;
+    }
+    instance->value = src;
+    info.GetReturnValue().Set(result);
+}
+
+NAN_METHOD(Archive::SourceFile) {
+    Arguments args("sourceFile", info);
+    Archive* archive;
+    if(!args.Unwrap(archive)) {
+        return;
+    }
+    auto result = Nan::NewInstance(Nan::New(Source::constructor), 0, nullptr).ToLocalChecked();
+    Source* instance;
+    if(!args.Unwrap(result, instance)) {
+        return;
+    }
+    std::string fname;
+    zip_uint64_t start;
+    zip_int64_t len;
+    if(!args.Convert(0, fname) || !args.Convert(1, start) || !args.Convert(2, len)) {
+        return;
+    }
+    /**
+     * create source from in-memory data
+     */
+    //zip_source_file(zip_t *za, const char *fname, zip_uint64_t start, zip_int64_t len)
+    zip_source_t* src = zip_source_file(archive->value, fname.c_str(), start, len);
+    if(src == nullptr){
+        archive->ThrowError("create source buffer");
+        return;
+    }
+    instance->value = src;
+    info.GetReturnValue().Set(result);
+}
+
 NAN_METHOD(Archive::Discard) {
     Arguments args("discard", info);
     Archive* archive;
@@ -243,8 +326,8 @@ NAN_METHOD(Archive::Open){
     if(!args.Unwrap(archive) || !args.Convert(0, path)) {
         return;
     }
-    zip_flags_t flags;
-    if(!ConvertZipConstant(info, 1, flags)){
+    int flags;
+    if(!ConvertZipOpenModeFlag(info, 1, flags)){
         return;
     }
     if(archive->value) {

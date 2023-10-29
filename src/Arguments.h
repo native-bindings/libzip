@@ -49,6 +49,7 @@ public:
         return true;
     }
     [[nodiscard]] static bool IsUint32(const v8::Local<v8::Value>&);
+    [[nodiscard]] static bool IsInt32(const v8::Local<v8::Value>&);
     [[nodiscard]] bool AssertArgumentType(std::string&& expectedType, int index, const std::function<bool(const v8::Local<v8::Value>&)>& assert) const;
 private:
     std::string methodName;

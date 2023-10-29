@@ -7,16 +7,6 @@ export const zipDefines = [
     {
         bitwise: true,
         constants: [
-            "ZIP_CREATE",
-            "ZIP_EXCL",
-            "ZIP_CHECKCONS",
-            "ZIP_TRUNCATE",
-            "ZIP_RDONLY"
-        ]
-    },
-    {
-        bitwise: true,
-        constants: [
             "ZIP_FL_NOCASE",
             "ZIP_FL_RECOMPRESS",
             "ZIP_FL_NODIR",
@@ -93,57 +83,6 @@ export const zipDefines = [
      */
     {
         constants: ["ZIP_ET_NONE", "ZIP_ET_SYS", "ZIP_ET_ZLIB", "ZIP_ET_LIBZIP"]
-    },
-    /**
-     * ZIP_CM_*
-     */
-    {
-        constants: [
-            "ZIP_CM_DEFAULT",
-            "ZIP_CM_STORE",
-            "ZIP_CM_SHRINK",
-            "ZIP_CM_REDUCE_1",
-            "ZIP_CM_REDUCE_2",
-            "ZIP_CM_REDUCE_3",
-            "ZIP_CM_REDUCE_4",
-            "ZIP_CM_IMPLODE",
-            "ZIP_CM_DEFLATE",
-            "ZIP_CM_DEFLATE64",
-            "ZIP_CM_PKWARE_IMPLODE",
-            "ZIP_CM_BZIP2",
-            "ZIP_CM_LZMA",
-            "ZIP_CM_TERSE",
-            "ZIP_CM_LZ77",
-            "ZIP_CM_LZMA2",
-            "ZIP_CM_ZSTD",
-            "ZIP_CM_XZ",
-            "ZIP_CM_JPEG",
-            "ZIP_CM_WAVPACK",
-            "ZIP_CM_PPMD"
-        ]
-    },
-    /**
-     * ZIP_EM_*
-     */
-    {
-        constants: [
-            "ZIP_EM_NONE",
-            "ZIP_EM_TRAD_PKWARE",
-            // ! see zip.h at line 198
-            // "ZIP_EM_DES",
-            // "ZIP_EM_RC2_OLD",
-            // "ZIP_EM_3DES_168",
-            // "ZIP_EM_3DES_112",
-            // "ZIP_EM_PKZIP_AES_128",
-            // "ZIP_EM_PKZIP_AES_192",
-            // "ZIP_EM_PKZIP_AES_256",
-            // "ZIP_EM_RC2",
-            // "ZIP_EM_RC4",
-            "ZIP_EM_AES_128",
-            "ZIP_EM_AES_192",
-            "ZIP_EM_AES_256",
-            "ZIP_EM_UNKNOWN"
-        ]
     },
     /**
      * ZIP_OPSYS_*

@@ -16,12 +16,96 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
                 }
             ]).defines,
             name: "NativeConstant",
+            jsType: "Uint32",
             outputVariableType: "int"
         },
         {
+            defines: buildDefines([
+                /**
+                 * ZIP_EM_*
+                 */
+                {
+                    constants: [
+                        "ZIP_EM_NONE",
+                        "ZIP_EM_TRAD_PKWARE",
+                        // ! see zip.h at line 198
+                        // "ZIP_EM_DES",
+                        // "ZIP_EM_RC2_OLD",
+                        // "ZIP_EM_3DES_168",
+                        // "ZIP_EM_3DES_112",
+                        // "ZIP_EM_PKZIP_AES_128",
+                        // "ZIP_EM_PKZIP_AES_192",
+                        // "ZIP_EM_PKZIP_AES_256",
+                        // "ZIP_EM_RC2",
+                        // "ZIP_EM_RC4",
+                        "ZIP_EM_AES_128",
+                        "ZIP_EM_AES_192",
+                        "ZIP_EM_AES_256",
+                        "ZIP_EM_UNKNOWN"
+                    ]
+                }
+            ]).defines,
+            name: "ZipEncryptionMethodFlag",
+            jsType: "Uint32",
+            outputVariableType: "zip_uint16_t"
+        },
+        {
+            defines: buildDefines([
+                /**
+                 * ZIP_CM_*
+                 */
+                {
+                    constants: [
+                        "ZIP_CM_DEFAULT",
+                        "ZIP_CM_STORE",
+                        "ZIP_CM_SHRINK",
+                        "ZIP_CM_REDUCE_1",
+                        "ZIP_CM_REDUCE_2",
+                        "ZIP_CM_REDUCE_3",
+                        "ZIP_CM_REDUCE_4",
+                        "ZIP_CM_IMPLODE",
+                        "ZIP_CM_DEFLATE",
+                        "ZIP_CM_DEFLATE64",
+                        "ZIP_CM_PKWARE_IMPLODE",
+                        "ZIP_CM_BZIP2",
+                        "ZIP_CM_LZMA",
+                        "ZIP_CM_TERSE",
+                        "ZIP_CM_LZ77",
+                        "ZIP_CM_LZMA2",
+                        "ZIP_CM_ZSTD",
+                        "ZIP_CM_XZ",
+                        "ZIP_CM_JPEG",
+                        "ZIP_CM_WAVPACK",
+                        "ZIP_CM_PPMD"
+                    ]
+                }
+            ]).defines,
+            name: "ZipCompressionMethodFlag",
+            jsType: "Int32",
+            outputVariableType: "zip_int32_t"
+        },
+        {
             defines: buildDefines(zipDefines).defines,
+            jsType: "Uint32",
             name: "ZipConstant",
             outputVariableType: "zip_flags_t"
+        },
+        {
+            defines: buildDefines([
+                {
+                    bitwise: true,
+                    constants: [
+                        "ZIP_CREATE",
+                        "ZIP_EXCL",
+                        "ZIP_CHECKCONS",
+                        "ZIP_TRUNCATE",
+                        "ZIP_RDONLY"
+                    ]
+                }
+            ]).defines,
+            name: "ZipOpenModeFlag",
+            jsType: "Uint32",
+            outputVariableType: "int"
         },
         {
             defines: buildDefines([
@@ -43,6 +127,7 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
                     ]
                 }
             ]).defines,
+            jsType: "Uint32",
             name: "ZipStatFlag",
             outputVariableType: "zip_flags_t"
         }
@@ -82,6 +167,7 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
         const {
             setFunctionName,
             convertFunctionName,
+            jsType,
             getBindingValueFunctionName,
             defines,
             outputVariableType
@@ -123,14 +209,14 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
             () => {
                 cs.write('Arguments args("libzipflags",info);\n');
                 cs.write(
-                    'if(!args.AssertArgumentType("Uint32", index, Arguments::IsUint32)) {\n',
+                    `if(!args.AssertArgumentType("${jsType}", index, Arguments::Is${jsType})) {\n`,
                     () => {
                         cs.write("return false;\n");
                     },
                     "}\n"
                 );
                 cs.write(
-                    "uint32_t val = Nan::To<v8::Uint32>(info[index]).ToLocalChecked()->Value();\n"
+                    `auto val = Nan::To<v8::${jsType}>(info[index]).ToLocalChecked()->Value();\n`
                 );
                 for (const d of defines) {
                     switch (d.type) {
@@ -204,7 +290,7 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
             "}\n"
         );
         cs.write(
-            `bool ${getBindingValueFunctionName}(const ${outputVariableType}& value, v8::Local<v8::Uint32>& out) {\n`,
+            `bool ${getBindingValueFunctionName}(const ${outputVariableType}& value, v8::Local<v8::${jsType}>& out) {\n`,
             () => {
                 if (defines.some((d) => d.type === DefineType.Flags)) {
                     cs.write("uint32_t v;\n");
@@ -238,7 +324,7 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
                                         "}\n"
                                     );
                                 }
-                                cs.write("out = Nan::New<v8::Uint32>(v);\n");
+                                cs.write(`out = Nan::New<v8::${jsType}>(v);\n`);
                                 cs.write("return true;\n");
                             });
                             cs.write("}\n");
@@ -248,7 +334,7 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
                                 `if(value == ${d.name}) {\n`,
                                 () => {
                                     cs.write(
-                                        `out = Nan::New<v8::Uint32>(${d.value});\n`
+                                        `out = Nan::New<v8::${jsType}>(${d.value});\n`
                                     );
                                     cs.write("return true;\n");
                                 },
@@ -268,7 +354,7 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
         );
     }
     await fs.promises.writeFile(
-        path.resolve(__dirname, "../Constants.cpp"),
+        path.resolve(__dirname, "../src/Constants.cpp"),
         cs.value()
     );
 
@@ -288,7 +374,7 @@ import { Define, DefineType, IPair, buildDefines, zipDefines } from "./defines";
     cs.write("\n");
     cs.write("#endif // NODELIBZIP_H_\n");
     await fs.promises.writeFile(
-        path.resolve(__dirname, "../Constants.h"),
+        path.resolve(__dirname, "../src/Constants.h"),
         cs.value()
     );
 

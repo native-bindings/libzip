@@ -13,12 +13,15 @@ private:
     zip_t* value = nullptr;
     static NAN_METHOD(New);
     static NAN_METHOD(AddDirectory);
+    static NAN_METHOD(AddFile);
     static NAN_METHOD(GetNumEntries);
     static NAN_METHOD(Open);
     static NAN_METHOD(OpenFile);
     static NAN_METHOD(StatIndex);
     static NAN_METHOD(Stat);
     static NAN_METHOD(Discard);
+    static NAN_METHOD(SourceFile);
+    static NAN_METHOD(SourceBuffer);
     static NAN_METHOD(Delete);
     static NAN_METHOD(RenameFile);
     static NAN_METHOD(NameLocate);
