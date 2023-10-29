@@ -8,10 +8,13 @@
         "failFast": true
     },
     "files": [
+        "index.js",
+        "index.d.ts",
+        "constants.d.ts",
         "deps/**/*",
         "CMakeLists.txt",
-        "index.{js,d.ts}",
-        "*.{cpp,h}"
+        "src/**/CMakeLists.txt",
+        "src/**/*.{cpp,h}"
     ],
     "scripts": {
         "test": "npm run build:ts && npm run build:bindings && npx ava test/index.js",
