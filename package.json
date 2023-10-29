@@ -1,6 +1,6 @@
 {
-    "name": "node-libzip",
-    "version": "1.0.4",
+    "name": "@native-bindings/libzip",
+    "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "ava": {

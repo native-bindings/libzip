@@ -1,9 +1,9 @@
-# node-libzip
+# @native-bindings/libzip
 
 ## Installation
 
 ```bash
-npm install node-libzip
+npm install @native-bindings/libzip
 ```
 
 ## 64-bit integers
@@ -23,7 +23,7 @@ The API is very similar to the original API of libzip. The only difference is th
 ### Creating an archive and adding a file to it
 
 ```typescript
-import * as zip from "node-libzip";
+import * as zip from "@native-bindings/libzip";
 import JSBI from "jsbi";
 
 export default async function () {
@@ -47,7 +47,7 @@ export default async function () {
 ### Iterating over the files in an archive
 
 ```typescript
-import * as zip from "node-libzip";
+import * as zip from "@native-bindings/libzip";
 import JSBI from "jsbi";
 
 export default async function () {
