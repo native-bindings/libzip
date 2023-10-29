@@ -103,3 +103,8 @@ bool Arguments::Get(const uint64_t& input, v8::Local<v8::Value>& out) {
     out = Nan::New(std::to_string(input)).ToLocalChecked();
     return true;
 }
+
+bool Arguments::Get(const time_t& value, v8::Local<v8::Value> &out) {
+    out = Nan::New<v8::Number>(value);
+    return true;
+}
