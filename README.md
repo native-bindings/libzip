@@ -1,12 +1,29 @@
 # @native-bindings/libzip
 
-## Installation
+## [Requirements](#requirements)
+
+-   zlib
+
+## [Optional dependencies](#optional-dependencies)
+
+Installing the dependencies below will enable the corresponding features in libzip.
+
+-   CommonCrypto
+-   GnuTLS
+-   mbed TLS
+-   OpenSSL
+-   BZIP2
+-   LZMA
+-   ZSTD
+-   Windows Crypto
+
+## [Installation](#installation)
 
 ```bash
 npm install @native-bindings/libzip
 ```
 
-## 64-bit integers
+## [64-bit integers](#64-bit-integers)
 
 libzip uses 64-bit integers types in the native code. In the Node.js side, these are represented as a strings. I decided to keep them, because 32-bit integers cannot go over a certain length. In case of file size, an unsigned 32-bit integer can represent up to 4 GB file size, above that, we would have imprecision issues, not only for file sizes, but for file indices as well.
 
@@ -14,13 +31,13 @@ Using unsigned 64-bit integers, gives us the possibility to handle files up to 1
 
 To circumvent that, you can use the `jsbi` or other library of your choice to deal with these numbers.
 
-## Usage
+## [Usage](#usage)
 
 The API is very similar to the original API of libzip. The only difference is that the functions are in camelCase, and some functions like `dirAdd` were renamed to `addDirectory`, `fileAdd` to `addFile`, etc.
 
-## Examples
+## [Examples](#examples)
 
-### Creating an archive and adding a file to it
+### [Creating an archive and adding a file to it](#creating-an-archive-and-adding-a-file-to-it)
 
 ```typescript
 import * as zip from "@native-bindings/libzip";
@@ -44,7 +61,7 @@ export default async function () {
 }
 ```
 
-### Iterating over the files in an archive
+### [Iterating over the files in an archive](#iterating-over-the-files-in-an-archive)
 
 ```typescript
 import * as zip from "@native-bindings/libzip";
