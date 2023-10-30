@@ -25,7 +25,7 @@ NAN_METHOD(EncryptionMethodSupported) {
     if(!ConvertZipCompressionMethodFlag(info, 0, method) || !args.Convert(1, compress)) {
         return;
     }
-    info.GetReturnValue().Set(zip_compression_method_supported(method, compress) == 1 ? Nan::True() : Nan::False());
+    info.GetReturnValue().Set(zip_encryption_method_supported(method, compress) == 1 ? Nan::True() : Nan::False());
 }
 
 NAN_MODULE_INIT(Init) {
