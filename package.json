@@ -19,7 +19,7 @@
     "scripts": {
         "test": "npm run build:ts && npm run build:bindings && npx ava test/index.js",
         "build:ts": "npx tsc -b . --force",
-        "build:bindings": "npx cmake-js compile -C",
+        "build:bindings": "npx cmake-js compile -C --CDBUILD_TOOLS=OFF --CDBUILD_EXAMPLES=OFF --CDSKIP_INSTALL_ALL=ON --CDBUILD_DOC=OFF --CDBUILD_REGRESS=OFF --CDLIBZIP_DO_INSTALL=OFF",
         "prepublishOnly": "npx ts-node scripts && npm test",
         "postinstall": "npm run build:bindings"
     },
