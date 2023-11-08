@@ -11,4 +11,5 @@ if(NOT CMAKE_JS_VERSION)
 endif()
 
 add_subdirectory(deps/libzip-1.10.1)
+add_subdirectory(core)
 add_subdirectory(src)

@@ -2,7 +2,6 @@
     "ts-node": {
         "preferTsExts": true
     },
-    "include": ["test/index.ts", "scripts/defines.ts", "scripts/index.ts"],
     "compilerOptions": {
         "types": ["node"],
         "lib": ["ESNext"],

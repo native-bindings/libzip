@@ -1,5 +1,5 @@
 #include "File.h"
-#include "Arguments.h"
+#include "core/Arguments.h"
 #include "Constants.h"
 
 Nan::Persistent<v8::Function> File::constructor;
@@ -27,7 +27,7 @@ NAN_METHOD(File::New) {
 }
 
 NAN_METHOD(File::IsSeekable) {
-    Arguments args("isSeekable", info);
+    Arguments args(info, "isSeekable");
     File* file;
     if(!args.Unwrap(file)) {
         return;
@@ -44,7 +44,7 @@ NAN_METHOD(File::IsSeekable) {
 }
 
 NAN_METHOD(File::Seek) {
-    Arguments args("seek", info);
+    Arguments args(info, "seek");
     File* file;
     if(!args.Unwrap(file)) {
         return;
@@ -82,7 +82,7 @@ NAN_METHOD(File::Tell) {
 }
 
 NAN_METHOD(File::Close) {
-    Arguments args("close", info);
+    Arguments args(info, "close");
     File* file;
     if(!args.Unwrap(file)) {
         return;
@@ -107,7 +107,7 @@ NAN_METHOD(File::Close) {
 }
 
 NAN_METHOD(File::Read) {
-    Arguments args("read", info);
+    Arguments args(info, "read");
     File* file;
     if(!args.Unwrap(file)) {
         return;

@@ -2,14 +2,14 @@
 #include "File.h"
 #include "Constants.h"
 #include "Stat.h"
-#include "Arguments.h"
+#include "core/Arguments.h"
 #include "Source.h"
 
 #include <nan.h>
 #include <zip.h>
 
 NAN_METHOD(CompressionMethodSupported) {
-    Arguments args("compressionMethodSupported", info);
+    Arguments args(info, "compressionMethodSupported");
     zip_int32_t method;
     int compress;
     if(!ConvertZipCompressionMethodFlag(info, 0, method) || !args.Convert(1, compress)) {
@@ -19,7 +19,7 @@ NAN_METHOD(CompressionMethodSupported) {
 }
 
 NAN_METHOD(EncryptionMethodSupported) {
-    Arguments args("encryptionMethodSupported", info);
+    Arguments args(info, "encryptionMethodSupported");
     zip_int32_t method;
     int compress;
     if(!ConvertZipCompressionMethodFlag(info, 0, method) || !args.Convert(1, compress)) {

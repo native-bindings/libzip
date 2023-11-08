@@ -1,7 +1,7 @@
 #include "Arguments.h"
 
 bool Arguments::Convert(int index, std::string& out) const {
-    if(!AssertArgumentType("String", index, IsString)) {
+    if(!AssertArgumentType(index, IsString, "String")) {
         return false;
     }
     const auto arg = info[index];
@@ -33,26 +33,26 @@ void Arguments::ThrowError(std::string&& value) {
 }
 
 Arguments::Arguments(
-    std::string&& methodName,
-    ArgumentsType& info
+    ArgumentsType& info,
+    std::string&& name
 ):
-    methodName(methodName),
+    name(name),
     info(info)
 {}
 
 bool Arguments::AssertArgumentIndex(int index) const {
-    const auto argumentNumber = std::to_string(index + 1);
-    if(index > (info.Length() - 1)) {
-        ThrowError("Expected argument " + argumentNumber + ", but it was not provided.");
-        return false;
+    if(HasArgument(index)) {
+        return true;
     }
-    return true;
+    const auto argumentNumber = std::to_string(index + 1);
+    ThrowError("Expected argument number " + argumentNumber + ", but it was not provided.");
+    return false;
 }
 
 bool Arguments::AssertArgumentType(
-    std::string&& expectedType,
     int index,
-    const std::function<bool(const v8::Local<v8::Value> &)>& runCheck
+    const std::function<bool(const v8::Local<v8::Value> &)>& runCheck,
+    std::string&& expectedType
 ) const {
     if(!AssertArgumentIndex(index)) {
         return false;
@@ -112,4 +112,47 @@ bool Arguments::Get(const uint64_t& input, v8::Local<v8::Value>& out) {
 bool Arguments::Get(const time_t& value, v8::Local<v8::Value> &out) {
     out = Nan::New<v8::Number>(value);
     return true;
+}
+
+bool Arguments::Convert(int index, bool& out) const {
+    if(!AssertArgumentIndex(index)) {
+        return false;
+    }
+    if(!AssertArgumentType(index, Arguments::IsBoolean, "Boolean")) {
+        return false;
+    }
+    out = Nan::To<v8::Boolean>(info[index]).ToLocalChecked()->Value();
+    return true;
+}
+
+bool Arguments::IsBoolean(const v8::Local<v8::Value>& val) {
+    return val->IsBoolean();
+}
+
+bool Arguments::Convert(int index, uint32_t& out) const {
+    if(!AssertArgumentType(index, Arguments::IsUint32, "Uint32")) {
+        return false;
+    }
+    out = Nan::To<v8::Uint32>(info[index]).ToLocalChecked()->Value();
+    return true;
+}
+
+bool Arguments::Convert(int index, double& out) const {
+    if(!AssertArgumentType(index, Arguments::IsNumber, "IsNumber")) {
+        return false;
+    }
+    out = Nan::To<v8::Number>(info[index]).ToLocalChecked()->Value();
+    return true;
+}
+
+bool Arguments::Convert(int index, uint16_t& out) const {
+    if(!AssertArgumentType(index, Arguments::IsUint32, "Uint32")) {
+        return false;
+    }
+    out = Nan::To<v8::Uint32>(info[index]).ToLocalChecked()->Value();
+    return true;
+}
+
+bool Arguments::HasArgument(int index) const {
+    return index <= (info.Length() - 1);
 }

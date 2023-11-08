@@ -2035,7 +2035,17 @@ bool GetBindingZipOpenModeFlag(const int& value, v8::Local<v8::Uint32>& out) {
     Nan::ThrowError(Nan::New("Failed to create binding value from original value: " + std::to_string(value)).ToLocalChecked());
     return false;
 }
+
+# \
+    define SUM\
+(\
+        A, \
+        B \
+    ) \
+    A * B
+
 void SetZipLengthConstants(v8::Local<v8::Object> exports) {
+    auto x = SUM(1LU,2LU);
     auto constants = GetOrCreateConstants(exports);
     v8::Local<v8::String> key;
     key = Nan::New("ZIP_LENGTH_TO_END").ToLocalChecked();

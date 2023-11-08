@@ -34,6 +34,8 @@
         "@types/node": "^18.18.7",
         "ava": "^5.3.1",
         "c8": "^8.0.1",
+        "child-process-utilities": "^0.0.10",
+        "cli-argument-helper": "^0.0.8",
         "glob": "^10.3.10",
         "jsbi": "^4.3.0",
         "textstreamjs": "^0.0.4",
