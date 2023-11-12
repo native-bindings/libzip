@@ -9,16 +9,15 @@ import Uint8ArrayReader, {
 export enum PreprocessorTokenType {
     Punctuator,
     Identifier,
+    LiteralNumber,
     DirectivePunctuator,
     LineBreak,
     Backslash,
-    MultiLineComment,
-    SingleLineComment,
     /**
      * the `value` property should contain just the string literal without the quotes
      */
     LiteralString,
-    RawCode
+    UnprocessedBlock
 }
 
 export interface IPreprocessorToken {
@@ -55,13 +54,7 @@ export default class PreprocessorTokenizer extends Uint8ArrayReader {
             }
         }
         this.#createRawCodeTokens();
-        console.log(
-            this.#tokens.map((t) => ({
-                ...t,
-                value: new TextDecoder().decode(t.value)
-            }))
-        );
-        debugger;
+        return this.#tokens;
     }
     #createRawCodeTokens() {
         let byteLength: number;
@@ -83,7 +76,7 @@ export default class PreprocessorTokenizer extends Uint8ArrayReader {
              */
             if (i === 0 && token.position.start > 0) {
                 tokens.splice(0, 0, {
-                    type: PreprocessorTokenType.RawCode,
+                    type: PreprocessorTokenType.UnprocessedBlock,
                     value: this.subarray(0, token.position.start),
                     position: {
                         start: 0,
@@ -109,7 +102,7 @@ export default class PreprocessorTokenizer extends Uint8ArrayReader {
             const end = token.position.end + byteLength;
             const rawCode = this.subarray(token.position.end, end);
             tokens.splice(addIndex, 0, {
-                type: PreprocessorTokenType.RawCode,
+                type: PreprocessorTokenType.UnprocessedBlock,
                 value: rawCode,
                 position: {
                     start: token.position.end,
@@ -117,6 +110,29 @@ export default class PreprocessorTokenizer extends Uint8ArrayReader {
                 }
             });
         }
+    }
+    #readLiteralNumber() {
+        const start = this.position();
+        while (!this.eof() && this.validate(Character.isIntegerPart)) {
+            this.advance();
+        }
+        if (this.read(".")) {
+            while (!this.eof() && this.validate(Character.isIntegerPart)) {
+                this.advance();
+            }
+            this.read("f");
+        } else {
+            this.read("LU") || this.read("L") || this.read("U");
+        }
+        const end = this.position();
+        this.#tokens.push({
+            type: PreprocessorTokenType.LiteralNumber,
+            value: this.subarray(start, end),
+            position: {
+                start,
+                end
+            }
+        });
     }
     #readLiteralString() {
         this.#rangeFactory.mark();
@@ -195,6 +211,8 @@ export default class PreprocessorTokenizer extends Uint8ArrayReader {
                 this.#readIdentifier();
             } else if (Character.isStringLiteralStart(this.current())) {
                 this.#readLiteralString();
+            } else if (this.validate(Character.isIdentifierPart)) {
+                this.#readLiteralNumber();
             } else {
                 /**
                  * lastly, if it's not a punctuator, simply skips the token
@@ -206,9 +224,18 @@ export default class PreprocessorTokenizer extends Uint8ArrayReader {
         }
     }
     #readPunctuator() {
-        const punctuators = ["&&", "||", "(", ")", "<", ">", "/"].sort(
-            (a, b) => b.length - a.length
-        );
+        const punctuators = [
+            "&&",
+            "||",
+            "!",
+            "(",
+            ")",
+            "<",
+            ">",
+            "/",
+            ",",
+            "..."
+        ].sort((a, b) => b.length - a.length);
         /**
          * Mark position before reading punctuator
          */

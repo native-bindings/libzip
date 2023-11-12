@@ -91,7 +91,7 @@ export default class ErrorFormatter {
         );
         const previewInfo = this.preview(30);
         const previewText = new TextDecoder().decode(previewInfo.slice);
-        const finalPreview = [...previewText.split("\n")];
+        const finalPreview = previewText.split("\n");
         const position = previewInfo.position;
         finalPreview.splice(
             position.lineNumber + 1,

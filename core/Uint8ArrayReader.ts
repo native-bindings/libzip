@@ -72,9 +72,23 @@ export default class Uint8ArrayReader {
             this.#offset++;
         }
     }
-    public expect(value: string) {
-        const result = this.read(value);
+    public expect(...oneOfList: string[]) {
+        let result: Uint8Array | null = null;
+        for (const value of oneOfList) {
+            result = this.read(value);
+            if (result !== null) {
+                break;
+            }
+        }
         if (result === null) {
+            const [value] = oneOfList;
+            if (oneOfList.length > 1) {
+                throw new Exception(
+                    this.#errorFormatter.format(
+                        `Expected one of ${oneOfList.join(", ")}`
+                    )
+                );
+            }
             throw new Exception(
                 this.#errorFormatter.format(`Expected ${value}`)
             );

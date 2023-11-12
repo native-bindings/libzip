@@ -7,3 +7,4 @@ export { default as mapVariablePositions } from "./mapVariablePositions";
 export { default as Parser } from "./Parser";
 export { default as Preprocessor } from "./Preprocessor";
 export { default as PreprocessorTokenizer } from "./preprocessor/PreprocessorTokenizer";
+export { default as PreprocessorParser } from "./preprocessor/PreprocessorParser";
